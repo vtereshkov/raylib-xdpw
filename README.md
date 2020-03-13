@@ -10,8 +10,15 @@ Raylib has been tested on Windows 7 in the following configuration:
 * Resources taken from the original bindings for Free Pascal.
 
 ## Screenshots
+_models_first_person_maze_
 ![](models_first_person_maze.png)
+
+_textures_particles_blending_
 ![](textures_particles_blending.png)
+
+_core_2d_camera_
 ![](core_2d_camera.png)
+
+_shaders_custom_uniform_
 ![](shaders_custom_uniform.png)
 
