@@ -18,7 +18,3 @@ _textures_particles_blending_
 
 _core_2d_camera_
 ![](core_2d_camera.png)
-
-_shaders_custom_uniform_
-![](shaders_custom_uniform.png)
-
