@@ -8,3 +8,10 @@ Raylib has been tested on Windows 7 in the following configuration:
     * `vcruntime140d.dll` (32-bit, 111952 bytes)
     * `ucrtbased.dll` (32-bit, 1647104 bytes)
 * Resources taken from the original bindings for Free Pascal.
+
+## Screenshots
+![](models_first_person_maze.png)
+![](textures_particles_blending.png)
+![](core_2d_camera.png)
+![](shaders_custom_uniform.png)
+
