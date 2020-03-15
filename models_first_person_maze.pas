@@ -81,7 +81,7 @@ begin
       begin
           for x := 0 to cubicmap.width -1 do
           begin             
-              if (PColor(Integer(mapPixels) + (y*cubicmap.width + x) * SizeOf(TColor))^.r = 255) and       // Collision: white pixel, only check R channel
+              if (mapPixels[y*cubicmap.width + x].r = 255) and       // Collision: white pixel, only check R channel
                   (CheckCollisionCircleRec(playerPos, playerRadius,
                   RectangleCreate(Trunc(mapPosition.x - 0.5 + x*1.0), Trunc(mapPosition.z - 0.5 + y*1.0), 1, 1 ))) then
               begin

@@ -13,6 +13,9 @@ Raylib has been tested on Windows 7 in the following configuration:
 _models_first_person_maze_
 ![](models_first_person_maze.png)
 
+_models_animation_
+![](models_animation.png)
+
 _textures_particles_blending_
 ![](textures_particles_blending.png)
 
