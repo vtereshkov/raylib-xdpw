@@ -37,7 +37,7 @@ begin
 	anims := LoadModelAnimations(StrToPChar('res/guy/guyanim.iqm'), @animsCount);
 	animFrameCounter := 0;
 
-	WriteLn(StrToPChar('animsCount: '), animsCount);
+	WriteLn('animsCount: ', animsCount);
 
 	SetCameraMode(cam, CAMERA_FREE);
 
@@ -83,7 +83,7 @@ begin
     //   It seems that using the CMem Unit (As the FIRST in the Uses)
 	//   makes FreePascal use the CRuntime Memory management. Allowing
 	//   us to correctly free memory allocated by raylib. (Hope this is correct)
-	FreeMem(anims);
+	//FreeMem(anims);
 
 	UnloadModel(model);
 
