@@ -913,7 +913,7 @@ function  GetScreenToWorld2D(aPosition : TVector2; aCamera : TCamera2D): TVector
 procedure SetTargetFPS(aFPS: Integer) cdecl; external cDllName;
 function  GetFPS: Integer cdecl; external cDllName;
 function  GetFrameTime: Single cdecl; external cDllName;
-//function  GetTime: Double cdecl; external cDllName;
+function  GetTime: Double cdecl; external cDllName;
 
 // TColor-related functions
 function  ColorToInt(aColor: TColor): Integer cdecl; external cDllName;
