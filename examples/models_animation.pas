@@ -1,6 +1,6 @@
 program animation_test;
 
-{$MODE objfpc}
+{$UNITPATH ..\libs\}
 
 uses raylib, rlgl, raymath, SysUtils;
 
