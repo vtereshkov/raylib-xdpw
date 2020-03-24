@@ -1,6 +1,6 @@
 program models_first_person_maze;
 
-{$MODE objfpc}
+{$UNITPATH ..\libs\}
 
 uses raylib, raymath, SysUtils;
 
