@@ -1,6 +1,6 @@
 program textures_particles_blending;
 
-{$MODE objfpc}
+{$UNITPATH ..\libs\}
 
 uses raylib, SysUtils;
 
