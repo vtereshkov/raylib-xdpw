@@ -1,6 +1,6 @@
 program core_2d_camara;
 
-{$MODE objfpc}
+{$UNITPATH ..\libs\}
 
 uses raylib, SysUtils;
 
