@@ -1,6 +1,6 @@
 program audio_music_stream;
 
-{$MODE objfpc}
+{$UNITPATH ..\libs\}
 
 uses raylib, SysUtils;
 
