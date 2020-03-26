@@ -1,8 +1,9 @@
 program animation_test;
 
+{$MODE objfpc}
 {$UNITPATH ..\libs\}
 
-uses raylib, rlgl, raymath, SysUtils;
+uses raylib, rlgl, raymath;
 
 const
 	screenWidth = 800;
@@ -18,7 +19,7 @@ var
   i : Integer;
 begin
 
-	InitWindow(screenWidth, screenHeight, StrToPChar('Animation Test'));	
+	InitWindow(screenWidth, screenHeight, 'Animation Test');	
 
 	cam.position := Vector3Create(15.0, 15.0, 15.0);
 	cam.target := Vector3Zero();
@@ -26,15 +27,15 @@ begin
 	cam.fovy := 45.0;
 	cam._type := CAMERA_PERSPECTIVE;
 
-	model := LoadModel(StrToPChar('res/guy/guy.iqm'));
-	texture := LoadTexture(StrToPChar('res/guy/guytex.png'));
+	model := LoadModel('res/guy/guy.iqm');
+	texture := LoadTexture('res/guy/guytex.png');
 	SetMaterialTexture(@model.materials[0], MAP_DIFFUSE, texture);
 
 	position := Vector3Zero();
 
 	// Load Animation Data
 	animsCount := 0;
-	anims := LoadModelAnimations(StrToPChar('res/guy/guyanim.iqm'), @animsCount);
+	anims := LoadModelAnimations('res/guy/guyanim.iqm', @animsCount);
 	animFrameCounter := 0;
 
 	WriteLn('animsCount: ', animsCount);

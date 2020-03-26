@@ -1,8 +1,9 @@
 program core_2d_camara;
 
+{$MODE objfpc}
 {$UNITPATH ..\libs\}
 
-uses raylib, SysUtils;
+uses raylib;
 
 const
   screenWidth = 800;
@@ -20,7 +21,7 @@ var
   i: Integer;
 
 begin
-  InitWindow(screenWidth, screenHeight, StrToPChar('raylib [core] example - 2d camera'));
+  InitWindow(screenWidth, screenHeight, 'raylib [core] example - 2d camera');
 
   player := RectangleCreate(400, 280, 40, 40);
 
@@ -82,7 +83,7 @@ begin
         DrawRectangle(-500, Trunc(camera.target.y), screenWidth*4, 1, GREEN);
       EndMode2D;
 
-      DrawText(StrToPChar('SCREEN AREA'), 640, 10, 20, RED);
+      DrawText('SCREEN AREA', 640, 10, 20, RED);
 
       DrawRectangle(0, 0, screenWidth, 5, RED);
       DrawRectangle(0, 5, 5, screenHeight - 10, RED);
@@ -92,11 +93,11 @@ begin
       DrawRectangle( 10, 10, 250, 113, Fade(SKYBLUE, 0.5));
       DrawRectangleLines( 10, 10, 250, 113, BLUE);
 
-      DrawText(StrToPChar('Free 2d camera controls:'), 20, 20, 10, BLACK);
-      DrawText(StrToPChar('- Right/Left to move Offset'), 40, 40, 10, DARKGRAY);
-      DrawText(StrToPChar('- Mouse Wheel to Zoom in-out'), 40, 60, 10, DARKGRAY);
-      DrawText(StrToPChar('- A / S to Rotate'), 40, 80, 10, DARKGRAY);
-      DrawText(StrToPChar('- R to reset Zoom and Rotation'), 40, 100, 10, DARKGRAY);
+      DrawText('Free 2d camera controls:', 20, 20, 10, BLACK);
+      DrawText('- Right/Left to move Offset', 40, 40, 10, DARKGRAY);
+      DrawText('- Mouse Wheel to Zoom in-out', 40, 60, 10, DARKGRAY);
+      DrawText('- A / S to Rotate', 40, 80, 10, DARKGRAY);
+      DrawText('- R to reset Zoom and Rotation', 40, 100, 10, DARKGRAY);
     EndDrawing;
   end;
 

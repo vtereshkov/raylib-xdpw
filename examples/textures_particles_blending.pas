@@ -1,8 +1,9 @@
 program textures_particles_blending;
 
+{$MODE objfpc}
 {$UNITPATH ..\libs\}
 
-uses raylib, SysUtils;
+uses raylib;
 
 const
   screenWidth = 800;
@@ -29,13 +30,13 @@ var
   blending: integer;
 
 begin
-  InitWindow(screenWidth, screenHeight, StrToPChar('raylib [textures] example - particles blending'));
+  InitWindow(screenWidth, screenHeight, 'raylib [textures] example - particles blending');
 
   for i := 0 to MAX_PARTICLES - 1 do
   begin
     mouseTail[i].position := Vector2Create(0, 0);
     mouseTail[i].color := ColorCreate(GetRandomValue(0, 255), GetRandomValue(0, 255),
-      GetRandomValue(0, 255), 255);      
+      GetRandomValue(0, 255), 255);
     mouseTail[i].alpha := 1.0;
     mouseTail[i].size := GetRandomValue(1, 30) / 20.0;
     mouseTail[i].rotation := GetRandomValue(0, 360);
@@ -43,7 +44,7 @@ begin
   end;
 
   gravity := 3.0;
-  smoke := LoadTexture(StrToPChar('res/textures/smoke.png'));
+  smoke := LoadTexture('res/textures/smoke.png');
   blending := BLEND_ALPHA;
   SetTargetFPS(60);
 
@@ -86,10 +87,6 @@ begin
         for i := 0 to MAX_PARTICLES - 1 do
         begin
           if mouseTail[i].active then
-            begin
-            //clr := Fade(ColorCreate(200, 150, 100, 255), 0.5);
-            //writeln('colour ', clr.r);
-            
             DrawTexturePro(smoke, RectangleCreate(0, 0, smoke.width, smoke.height),
               RectangleCreate(Trunc(mouseTail[i].position.x),
               Trunc(mouseTail[i].position.y), Trunc(smoke.width * mouseTail[i].size),
@@ -97,14 +94,13 @@ begin
               Vector2Create(smoke.width * mouseTail[i].size / 2,
               smoke.height * mouseTail[i].size / 2), mouseTail[i].rotation,
               Fade(mouseTail[i].color, mouseTail[i].alpha));
-            end;  
         end;
       EndBlendMode();
-      DrawText(StrToPChar('PRESS SPACE to CHANGE BLENDING MODE'), 180, 20, 20, BLACK);
+      DrawText('PRESS SPACE to CHANGE BLENDING MODE', 180, 20, 20, BLACK);
       if blending = BLEND_ALPHA then
-        DrawText(StrToPChar('ALPHA BLENDING'), 290, screenHeight - 40, 20, BLACK)
+        DrawText('ALPHA BLENDING', 290, screenHeight - 40, 20, BLACK)
       else
-        DrawText(StrToPChar('ADDITIVE BLENDING'), 280, screenHeight - 40, 20, RAYWHITE);
+        DrawText('ADDITIVE BLENDING', 280, screenHeight - 40, 20, RAYWHITE);
     EndDrawing();
   end;
 

@@ -1,8 +1,9 @@
 program models_first_person_maze;
 
+{$MODE objfpc}
 {$UNITPATH ..\libs\}
 
-uses raylib, raymath, SysUtils;
+uses raylib, raymath;
 
 const
   screenWidth = 800;
@@ -21,7 +22,7 @@ var
   playerCellX, playerCellY, x, y: integer;
 
 begin
-  InitWindow(screenWidth, screenHeight, StrToPChar('raylib [models] example - first person maze'));
+  InitWindow(screenWidth, screenHeight, 'raylib [models] example - first person maze');
 
   // Define the camera to look into our 3d world
   // camera := TCamera3DCreate( Vector3Create(0.2, 0.4, 0.2), Vector3Zero(), Vector3Create(0.0, 1.0, 0.0), 45.0, CAMERA_PERSPECTIVE);
@@ -31,14 +32,14 @@ begin
   camera.fovy := 45.0;
   camera._type := CAMERA_PERSPECTIVE;
 
-  imMap := LoadImage(StrToPChar('res/textures/cubicmap.png'));      // Load cubicmap image (RAM)
+  imMap := LoadImage('res/textures/cubicmap.png');      // Load cubicmap image (RAM)
   cubicmap := LoadTextureFromImage(imMap);       // Convert image to texture to display (VRAM)
   mesh := GenMeshCubicmap(imMap, Vector3Create( 1.0, 1.0, 1.0));
   model := LoadModelFromMesh(mesh);
 
   // NOTE: By default each cube is mapped to one part of texture atlas
-  texture := LoadTexture(StrToPChar('res/textures/cubicmap_atlas.png'));          // Load map texture
-  SetMaterialTexture(model.materials, MAP_DIFFUSE, texture);      // Set map diffuse texture
+  texture := LoadTexture('res/textures/cubicmap_atlas.png');          // Load map texture
+  SetMaterialTexture(@model.materials[0], MAP_DIFFUSE, texture);      // Set map diffuse texture
 
   // Get map image data to be used for collision detection
   mapPixels := GetImageData(imMap);
@@ -80,10 +81,10 @@ begin
       for y := 0 to cubicmap.height -1 do
       begin
           for x := 0 to cubicmap.width -1 do
-          begin             
-              if (mapPixels[y*cubicmap.width + x].r = 255) and       // Collision: white pixel, only check R channel
+          begin
+              if ((mapPixels[y*cubicmap.width + x].r = 255) and       // Collision: white pixel, only check R channel
                   (CheckCollisionCircleRec(playerPos, playerRadius,
-                  RectangleCreate(Trunc(mapPosition.x - 0.5 + x*1.0), Trunc(mapPosition.z - 0.5 + y*1.0), 1, 1 ))) then
+                  RectangleCreate(Trunc(mapPosition.x - 0.5 + x*1.0), Trunc(mapPosition.z - 0.5 + y*1.0), 1, 1 )))) then
               begin
                   // Collision detected, reset camera position
                   camera.position := oldCamPos;
@@ -119,7 +120,7 @@ begin
 
   // De-Initialization
   //--------------------------------------------------------------------------------------
-  //Dispose(mapPixels);            // Unload color array
+  //free(mapPixels);            // Unload color array
 
   UnloadTexture(cubicmap);    // Unload cubicmap texture
   UnloadTexture(texture);     // Unload map texture
